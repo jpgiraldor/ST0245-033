@@ -8,7 +8,6 @@ public class MyArrayList <T>{
 
         array = (T[]) new Object[DEAFAULT_SIZE];
         size = 0;
-        // throw new IndexOutOfBoundsException();
     }
     public T get(int index) {
         if (index < size || index > 0) {
