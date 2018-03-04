@@ -71,13 +71,13 @@ public class Array3 {
   }
 
   public boolean linearIn(int[] outer, int[] inner) {
-    int posInner = 0;                                 //C1
+    int posOuter = 0;                                 //C1
     int recorrido = 0;                                //C2
     for(int i = 0; i < inner.length; i++){            //n
-      for(int j = posInner; j < outer.length; j++){   //n*m
+      for(int j = posOuter; j < outer.length; j++){   //n*m
         if(outer[j] == inner[i]){                     //C2*n*m
           recorrido ++;                               //C2*n*m
-          posInner = j;                               //C2*n*m
+          posOuter = j;                               //C2*n*m
           break;                                      //C2*n*m
         }
       }
