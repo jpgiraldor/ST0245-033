@@ -1,20 +1,34 @@
+import javafx.util.Pair;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 //GRAFO CON LISTAS
-public class DigraphAL
+public class DigraphAL extends Graph
 {
-    int tmñ = 0;
-    ArrayList[]nodo = new ArrayList[tmñ];
-    
+    private ArrayList<LinkedList<Pair<Integer,Integer>>> nodo;
+
     public DigraphAL(int size) {
-        this.tmñ = size;
+        super(size);
+        nodo = new ArrayList<>();
+        for (int i = 0; i < size + 1; i++) {
+            nodo.add(new LinkedList<>());
+        }
     }
     public void addArc(int source, int destination, int weight){
-        nodo[source].add(destination, weight);
+        nodo.get(source).add(new Pair<>(destination,weight));
     }
-      public int getWeight(int source, int destination) {
-        return (int) this.nodo[source].get(destination);
+    public int getWeight(int source, int destination) {
+        int result = 0;
+        for (Pair<Integer, Integer> integerIntegerPair : nodo.get(source)) {
+            if (integerIntegerPair.getKey() == destination) result = integerIntegerPair.getValue();
+        }
+        return result;
     }
-     public ArrayList<Integer> getSuccessors(int vertice){
-        return this.nodo[vertice];
+    public ArrayList<Integer> getSuccessors(int vertice){
+        ArrayList<Integer> n = new ArrayList<>();
+
+        nodo.get(vertice).forEach(i -> n.add(i.getKey()));
+
+        return n;
     }
 }
