@@ -25,7 +25,7 @@ public class DigraphAM extends Graph {
 
     public ArrayList<Integer> getSuccessors(int vertex) {
         ArrayList<Integer> np = new ArrayList<>();
-        for (int i = 1; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if (mat[vertex][i] != 0) {
                 np.add(i);
             }
